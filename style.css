@@ -25,6 +25,15 @@ html {
  --paragraph-clr: hsla(0, 0%, 100%, 0.75);
  --headings-clr: hsl(0, 0%, 95%);
 }
+.attribution {
+    font-size: 15px;
+    font-family: 'Big Shoulders Display', cursive;
+    margin-bottom: 25px;
+}
+.attribution a {
+    font-family: 'Lexend Daca', sans-serif;
+    color: var(--sedan-bg);
+}
 /* CONTENT STYLING */
 body {
     display:  flex;
@@ -46,6 +55,7 @@ main section:nth-child(3) {
 main section:nth-child(1) a {
     color: var(--sedan-bg);
 }
+
 main section:nth-child(2) a {
     color: var(--suvs-bg);
 }
@@ -54,9 +64,7 @@ main section:nth-child(3) a {
 }
 main {
     display: grid;
-    grid-template-columns: 1;
-    grid-template-rows: 3;
-    /* width: 327px; */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin: 88px 24px;
 }
 main .title {
@@ -76,23 +84,59 @@ main .info {
     margin: 0 49px;
     text-align: left
 }
-main a {
+section a {
     border-radius: 25px;
-    background-color: var(--paragraph-clr);
+    background: var(--paragraph-clr);
     padding: 8px 31.5px 21px 31.5px;
     text-decoration: none;
     font-size: 15px;
     font-family: 'Lexend Daca', sans-serif;
     margin: 25px 0 48px 0;
     margin-left: 49px;
+    transition: 500ms linear;
+    /* Added Transparent Border so that parent element (section) has not jumpy effect when hovering into transition */
+    border: 2px solid transparent;
+    align-self: flex-start;
+
 }
 main section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 section img {
     margin-top: 48px;
     margin-left: 49px;
+}
+@media screen and (min-width:663px) {
+    main section:nth-child(1) {
+        border-radius: 8px 0 0 0;
+    }
+    main section:nth-child(2) {
+        border-radius: 0 8px 0 0;
+    }
+}
+@media screen and (min-width: 920px) {
+    main section:nth-child(1) {
+        border-radius: 8px 0 0 8px;
+    }
+    main section:nth-child(2) {
+        border-radius: 0;
+    }
+    main section:nth-child(3) {
+        border-radius: 0 8px 8px 0;
+    }
+    section .info {
+        margin-bottom: 83px;
+    }
+    section:nth-child(-n + 3) a .learn-more:hover{
+        color: var(--headings-clr);
+    } 
+    section a.learn-more:hover {
+        background: none;
+        color: var(--paragraph-clr);
+        border: 2px solid var(--paragraph-clr);
+    }
+    
 }
